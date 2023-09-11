@@ -7,7 +7,7 @@ using Repositories.Interfaces;
 namespace NzWalks.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     
     public class RegionsController : Controller
     {

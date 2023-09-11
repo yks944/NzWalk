@@ -6,7 +6,7 @@ using Repositories.Interfaces;
 namespace NzWalks.Api.Controllers
 {
     [Controller]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class WalkDifficultyController : Controller
     {
         private readonly IWalkDifficultyRepo _walkDifficultyRepo;

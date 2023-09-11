@@ -7,7 +7,7 @@ using System.Reflection.Metadata.Ecma335;
 namespace NzWalks.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class WalksController : Controller
     {
         private readonly IWalkRepo _walkRepo;
