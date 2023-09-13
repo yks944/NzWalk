@@ -1,3 +1,6 @@
+using Azure.Extensions.AspNetCore.Configuration.Secrets;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 //using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -52,7 +55,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "NzWalkApi",
+        Title = "NzWalk-Api Swagger",
         Version = "v1"
     });
    /* c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
@@ -76,14 +79,17 @@ builder.Services.AddSwaggerGen(c =>
         }
     });*/
 });
+//key vault configuration
+var clientid = builder.Configuration["KeyVault:ClientId"];
+var tenantid = builder.Configuration["KeyVault:TenantId"];
+var clientsecret = builder.Configuration["KeyVault:ClientSecret"];
+var credentials = new ClientSecretCredential(tenantid,clientid,clientsecret);
+var secretClient = new SecretClient(new Uri(builder.Configuration["KeyVault:Uri"]),
+    credentials);
+builder.Configuration.AddAzureKeyVault(secretClient, new AzureKeyVaultConfigurationOptions());
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-/*if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}*/
 app.UseSwagger();
 app.UseSwaggerUI();
 //app.UseHttpsRedirection();
