@@ -30,6 +30,10 @@ jobs:
         files: '${{ env.WORKING_DIRECTORY }}/appsettings.json'
       env:
         Test: ${{ secrets.TEST }}
+        Uri: ${{ secrets.Uri }}
+        ClientId: ${{secrets.ClientId}}
+        TenantId: ${{secrets.TenantId}}
+        ClientSecret: ${{secrets.ClientSecret}}
     
     - name: Publish
       run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
