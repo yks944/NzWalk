@@ -55,7 +55,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = builder.Configuration["Test"],
+        Title = "Nz Walk Api",
         Version = "v1"
     });
    /* c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()

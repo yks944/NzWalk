@@ -29,11 +29,10 @@ jobs:
       with:
         files: '${{ env.WORKING_DIRECTORY }}/appsettings.json'
       env:
-        Test: ${{ secrets.TEST }}
-        Uri: ${{ secrets.Uri }}
-        ClientId: ${{secrets.ClientId}}
-        TenantId: ${{secrets.TenantId}}
-        ClientSecret: ${{secrets.ClientSecret}}
+        KeyVault.Uri: ${{ secrets.URI }}
+        KeyVault.ClientId: ${{ secrets.CLIENTID }}
+        KeyVault.TenantId: ${{ secrets.TENANTID }}
+        KeyVault.ClientSecret: ${{ secrets.CLIENTSECRET }}
     
     - name: Publish
       run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
